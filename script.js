@@ -12,13 +12,14 @@ function getWeather(lat,lon) {
     
 }
 function getCoordinates(city) {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
       .then(response => response.json())
       .then(data=> {
         console.log(data)
         var lat = data[0].lat
         var lon = data [0].lon
         getWeather(lat,lon)
+        getBrewery(city)
    
     })
 }
@@ -29,22 +30,50 @@ function getBrewery(city){
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        displayBrewery(data);
         
 
-    })
+    });
 
 }
+
+
+
 
 function displayWeather(data){
     console.log(data)
     cityname.textContent=data.name
     temp.textContent= data.main.temp
+    var iconCode= data.weather[0].icon;
+    var iconImg= document.createElement('img');
+    iconImg.src = `http://openweathermap.org/img/w/${iconCode}.png`;
+    temp.appendChild(iconImg);
 }
 
-function displayBrewery(){
+function displayBrewery(breweryData){
+    brewerycontainer.innerHTML="";
+     
+    breweryData.forEach(brewery => {
+        var breweryDiv = document.createElement('div');
+        breweryDiv.classList.add('brewery');
+    
+        var breweryName = document.createElement('h3');
+        breweryName.textContent = brewery.name || "Name not available";
+    
+        var breweryAddress = document.createElement('p');
+        breweryAddress.textContent = `Address: ${brewery.address_1 || "Address not available"}, ${brewery.city || "City not available"}, ${brewery.state || "State not available"}, ${brewery.postal_code || "Postal Code not available"}`;
   
-
-}
+        var breweryPhone= document.createElement('p');
+        breweryPhone.textContent= `Phone number: ${brewery.phone || "Phone number not available"},`
+  
+        breweryDiv.appendChild(breweryPhone);
+        breweryDiv.appendChild(breweryName);
+        breweryDiv.appendChild(breweryAddress);
+        brewerycontainer.appendChild(breweryDiv);
+  
+      });
+    }
+  
 
 
 
