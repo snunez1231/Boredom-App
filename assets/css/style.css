@@ -1,0 +1,194 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing:border-box;
+
+}
+
+.header-container{
+    margin-top: -650px;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    background: #ebffce;
+    color: #555;
+    padding: 10px 35px;
+    height: 80px;
+    border-radius: 30px;
+    /* flex: 1; */
+   
+    
+}
+body{
+    background-color: azure;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin:0;
+}
+
+.weather-card{
+    /* width:25%; */
+    width: 250px;
+    height:500px;
+    background: linear-gradient(150deg, #51bcba, #5930de);
+    color: #fff;
+    /* margin: 100px auto 0; */
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align:center;
+    margin-left:-500px;
+    
+}
+
+.brewery-card{
+    /* width:25%; */
+    width: 600px;
+    height:100px;
+    background: linear-gradient(150deg, #e7aee7, #deee98);
+    color: #fff;
+    /* margin: 100px auto 0; */
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align:center;
+    
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 200px;
+   
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebffce;
+    color: #555;
+    padding: 10px 25px;
+    height: 40px;
+    border-radius: 30px;
+    flex: 1;
+    font-size: 18px;
+}
+
+.search{
+    border:0;
+    outline:0;
+    background: #ebffce;
+    color:#555;
+    padding: 10px 25px;
+    height:40px;
+    border-radius: 30px;
+    flex:1;
+    margin-right:-400px;
+    font-size:15px;
+    margin-top: -450px;
+}
+
+.search button{
+    border:0;
+    /* outline:0; */
+    background: rgb(147, 194, 147);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.search button img{
+    width: 20px;
+    color:black;
+}
+
+.enter-city{
+    margin-left: -100px;
+}
+
+.searchHistory {
+    display: flex;
+    align-items: center;
+}
+
+.searchHistory  {
+    list-style: none;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background: linear-gradient(150deg, #95eecb, #4a9ecb);
+    color: #fff;
+    justify-content: space-between;
+}
+
+/* .searchHistory{
+    width: 700px;
+    height:100px;
+    background: linear-gradient(150deg, #95eecb, #80c2df);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding:20px;
+    text-align:center; 
+    margin-top:-650px;
+} */
+.weather{
+    margin: 50px;
+}
+
+.main-icon{
+    width:100px;
+    height:100px;
+}
+.icon {
+    width:35px;
+    height: 35px;
+}
+
+#wind-icon {
+    margin-right: -50px;
+}
+
+#humidity-icon{
+    margin-left:-50px;
+}
+
+.details{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 45px;
+    margin-right: 10px;
+
+}
+
+.day{
+    text-align: center;
+    margin-top: 25px;
+    margin-left: -85px;
+}
+
+.wind{
+    margin-right: -50px;
+}
+
+.humidity{
+    margin-left: -50px;
+}
+
+.wind-text{
+    margin-right:-40px;
+}
+
+.humidity-text{
+    margin-left:-40px;
+}
+.brewery-card {
+    width: 100%;
+    max-width: 650px;
+    margin: 20px auto;
+    display: block; 
+  }
