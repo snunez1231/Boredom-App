@@ -1,194 +1,77 @@
-
-*{
+body {
+    font-family: sans-serif;
+    background-color: azure;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    box-sizing:border-box;
-
-}
-
-.header-container{
-    margin-top: -650px;
-    text-align: center;
-    border: 0;
-    outline: 0;
-    background: #ebffce;
-    color: #555;
-    padding: 10px 35px;
-    height: 80px;
-    border-radius: 30px;
-    /* flex: 1; */
-   
-    
-}
-body{
-    background-color: azure;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    margin:0;
+    justify-content: start;
 }
 
-.weather-card{
-    /* width:25%; */
-    width: 250px;
-    height:500px;
-    background: linear-gradient(150deg, #51bcba, #5930de);
-    color: #fff;
-    /* margin: 100px auto 0; */
-    border-radius: 20px;
-    padding: 30px 20px;
-    text-align:center;
-    margin-left:-500px;
-    
+.header-container {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    background: #2689ec;
+    color: #151515;
+    padding: 20px;
+    width: 100%;
+    border-radius: 0 0 30px 30px;
 }
 
-.brewery-card{
-    /* width:25%; */
-    width: 600px;
-    height:100px;
-    background: linear-gradient(150deg, #e7aee7, #deee98);
-    color: #fff;
-    /* margin: 100px auto 0; */
-    border-radius: 20px;
-    padding: 30px 20px;
-    text-align:center;
-    
+.header-container h2 {
+    font-weight: bold;
 }
 
 .search-container {
+    color: #151515;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 200px;
-   
+    margin: 20px 0;
+    margin-right: -1000px;
 }
 
 .search input {
     border: 0;
-    outline: 0;
-    background: #ebffce;
-    color: #555;
+    background: #2689ec;
+    color: #151515;
     padding: 10px 25px;
     height: 40px;
     border-radius: 30px;
-    flex: 1;
+    margin-right: -10px;
     font-size: 18px;
 }
 
-.search{
-    border:0;
-    outline:0;
-    background: #ebffce;
-    color:#555;
-    padding: 10px 25px;
-    height:40px;
-    border-radius: 30px;
-    flex:1;
-    margin-right:-400px;
-    font-size:15px;
-    margin-top: -450px;
-}
-
-.search button{
-    border:0;
-    /* outline:0; */
-    background: rgb(147, 194, 147);
+.search button {
+    background:#2689ec;
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    border: 0;
     cursor: pointer;
 }
 
-.search button img{
-    width: 20px;
-    color:black;
-}
-
-.enter-city{
-    margin-left: -100px;
-}
-
-.searchHistory {
-    display: flex;
-    align-items: center;
-}
-
-.searchHistory  {
-    list-style: none;
-    margin-right: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    background: linear-gradient(150deg, #95eecb, #4a9ecb);
+.weather-card {
+    background: linear-gradient(150deg, #51bcba, #5930de);
     color: #fff;
-    justify-content: space-between;
-}
-
-/* .searchHistory{
-    width: 700px;
-    height:100px;
-    background: linear-gradient(150deg, #95eecb, #80c2df);
-    color: #fff;
-    margin: 100px auto 0;
-    border-radius: 10px;
-    padding:20px;
-    text-align:center; 
-    margin-top:-650px;
-} */
-.weather{
-    margin: 50px;
-}
-
-.main-icon{
-    width:100px;
-    height:100px;
-}
-.icon {
-    width:35px;
-    height: 35px;
-}
-
-#wind-icon {
-    margin-right: -50px;
-}
-
-#humidity-icon{
-    margin-left:-50px;
-}
-
-.details{
-    display:flex;
-    justify-content: space-between;
-    margin-top: 45px;
-    margin-right: 10px;
-
-}
-
-.day{
+    border-radius: 20px;
+    padding: 30px 20px;
     text-align: center;
-    margin-top: 25px;
-    margin-left: -85px;
+    margin-right: 1000px;
 }
 
-.wind{
-    margin-right: -50px;
-}
-
-.humidity{
-    margin-left: -50px;
-}
-
-.wind-text{
-    margin-right:-40px;
-}
-
-.humidity-text{
-    margin-left:-40px;
-}
 .brewery-card {
-    width: 100%;
-    max-width: 650px;
-    margin: 20px auto;
-    display: block; 
-  }
+    background: linear-gradient(150deg, #e7aee7, #deee98);
+    color: #fff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    margin: 10px 0;
+    width: 80%;
+};
+
+#cityInput::placeholder {
+    color: #151515; /* Set the color you want for the placeholder text */
+    font-style: italic; /* Set any additional styles you want for the placeholder text */
+}
