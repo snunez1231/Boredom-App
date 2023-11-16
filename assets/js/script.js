@@ -1,9 +1,10 @@
-var temp = document.getElementById('temp')
-var cityname= document.getElementById('city-name')
-var searchform = document.getElementById('search-form')
-var cityinput= document.getElementById('city-input')
-var brewerycontainer= document.getElementById('brewery-container') 
-var apiKey = "fcdb77bcab0f5e656f374a185e3665bd"
+var temp = document.getElementById('temperature0');
+var cityname = document.getElementById('city0');
+var searchform = document.querySelector('.search');
+var cityinput = document.getElementById('cityInput');
+var brewerycontainer = document.getElementById('brewery-container');
+var apiKey = "fcdb77bcab0f5e656f374a185e3665bd";
+
 
 function getWeather(lat,lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
@@ -14,28 +15,26 @@ function getWeather(lat,lon) {
 function getCoordinates(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
       .then(response => response.json())
-      .then(data=> {
-        console.log(data)
-        var lat = data[0].lat
-        var lon = data [0].lon
-        getWeather(lat,lon)
-        getBrewery(city)
-   
+      .then(data => {
+        console.log("Weather API Response:", data);
+        var lat = data[0].lat;
+        var lon = data[0].lon;
+        getWeather(lat, lon);
+        getBrewery(city);
     })
+    .catch(error => console.error("Error fetching weather API:", error));
 }
 
-function getBrewery(city){
-    console.log(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&per_page=3`)
+function getBrewery(city) {
     fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&per_page=3`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        console.log("Brewery API Response:", data);
         displayBrewery(data);
-        
-
-    });
-
+    })
+    .catch(error => console.error("Error fetching brewery API:", error));
 }
+
 
 
 
@@ -50,29 +49,32 @@ function displayWeather(data){
     temp.appendChild(iconImg);
 }
 
-function displayBrewery(breweryData){
-    brewerycontainer.innerHTML="";
-     
+function displayBrewery(breweryData) {
+    brewerycontainer.innerHTML = "";
+
+    var tileContainer = document.createElement('div');
+    tileContainer.classList.add('tile');
+
     breweryData.forEach(brewery => {
-        var breweryDiv = document.createElement('div');
-        breweryDiv.classList.add('brewery');
-    
-        var breweryName = document.createElement('h3');
+        var breweryTile = document.createElement('article');
+        breweryTile.classList.add('tile', 'is-child', 'notification', 'is-primary');
+
+        var breweryName = document.createElement('p');
+        breweryName.classList.add('title');
         breweryName.textContent = brewery.name || "Name not available";
-    
+
         var breweryAddress = document.createElement('p');
+        breweryAddress.classList.add('subtitle');
         breweryAddress.textContent = `Address: ${brewery.address_1 || "Address not available"}, ${brewery.city || "City not available"}, ${brewery.state || "State not available"}, ${brewery.postal_code || "Postal Code not available"}`;
-  
-        var breweryPhone= document.createElement('p');
-        breweryPhone.textContent= `Phone number: ${brewery.phone || "Phone number not available"},`
-  
-        breweryDiv.appendChild(breweryPhone);
-        breweryDiv.appendChild(breweryName);
-        breweryDiv.appendChild(breweryAddress);
-        brewerycontainer.appendChild(breweryDiv);
-  
-      });
-    }
+
+        breweryTile.appendChild(breweryName);
+        breweryTile.appendChild(breweryAddress);
+        tileContainer.appendChild(breweryTile);
+    });
+
+    brewerycontainer.appendChild(tileContainer);
+}
+
   
 
 

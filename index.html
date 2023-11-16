@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boredom App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+    
+    <title>Weather Dashboard</title>
+
+    <div class="header-container">
+    <h1>Brewery Locator</h1>
+    <h3>Enter a city and see what breweries are around and what the weather will look like!</h3>
+    <div class="search-container">
+      
+  </div>
+  </div>
+    
 </head>
 <body>
-  <header>
-    <h1>Boredom App</h1>
-  </header>
+  <div class="search-container">
+    <form class = "search">
+        <input type="text" id="cityInput" placeholder="enter city">
+        <button id="searchButton"><img src="assets/images/search.png" alt="search"></button> 
+      </form>  
+    
+</div> 
+            
+    <div class="weather-card" id="card0">
+        <div class="weather">
+            <img src="assets/images/rain.png" class="main-icon" id="icon0">
+            <h1 class="temperature" id="temperature0">50°F</h1>
+            <h2 class="city" id="city0">Chicago</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="assets/images/humidity.png" class="icon" id="humidity-icon">
+                    <p class="humidity" id="humidity0">50%</p>
+                    <p class="humidity-text">Humidity</p>
+                </div>
+                <div class="col">
+                    <img src="assets/images/wind.png" class="icon" id="wind-icon">
+                    <p class="wind" id="wind0">10mph</p>
+                    <p class = "wind-text">Wind</p>
+                    <h3 class="day" id="day0"></h3>   
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
-  <form id="search-form">
-    <label for="city-input">Enter City:</label>
-    <input type="text" id="city-input" required>
-    <button type="submit">Search</button>
-  </form>
-
-  <div>
-    <h2 id="city-name"></h2>
-    <p>Today's Tempature: <span id= "temp"> </span> &#176;F</p>
-  </div>
+    <div class="tile is-ancestor is-vertical" id="brewery-container"></div> 
   
-<div>
-    <h2 id="brewery-container"></h2>
-    <p>List of Breweries:</p>
-</div>
-
-
-  <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
-</html>
+</html> 
+
