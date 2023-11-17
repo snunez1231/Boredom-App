@@ -73,9 +73,15 @@ function displayBrewery(breweryData) {
         var breweryAddress = document.createElement('p');
         breweryAddress.classList.add('subtitle');
         breweryAddress.textContent = `Address: ${brewery.address_1 || "Address not available"}, ${brewery.city || "City not available"}, ${brewery.state || "State not available"}, ${brewery.postal_code || "Postal Code not available"}`;
+       
+        var breweryPhone= document.createElement('p');
+        breweryPhone.classList.add('subtitle');
+        breweryPhone.textContent= `Phone number: ${brewery.phone || "Phone number not available"},`
+  
 
         breweryTile.appendChild(breweryName);
         breweryTile.appendChild(breweryAddress);
+        breweryTile.appendChild(breweryPhone)
         tileContainer.appendChild(breweryTile);
     });
 
