@@ -43,9 +43,9 @@ function getBrewery(city) {
 function displayWeather(data){
     console.log(data)
     cityname.textContent=data.name
-    temp.textContent= data.main.temp
-    humidityElement.textContent= data.main.humidity
-    windElement.textContent= data.wind.speed
+    temp.textContent= `${data.main.temp}°F`
+    humidityElement.textContent= `${data.main.humidity}%`
+    windElement.textContent= `${data.wind.speed}%`
 
     var iconCode= data.weather[0].icon;
     var iconImg= document.createElement('img');
