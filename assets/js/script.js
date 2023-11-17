@@ -4,13 +4,14 @@ var searchform = document.querySelector('.search');
 var cityinput = document.getElementById('cityInput');
 var brewerycontainer = document.getElementById('brewery-container');
 var apiKey = "fcdb77bcab0f5e656f374a185e3665bd";
-
+var humidityElement = document.getElementById('humidity0')
+var windElement = document.getElementById ('wind0')
 
 function getWeather(lat,lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
       .then(response => response.json())
       .then(data=> displayWeather(data))
-    
+      .catch(error => console.error("Error fetching weather API:", error));
 }
 function getCoordinates(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
@@ -43,10 +44,16 @@ function displayWeather(data){
     console.log(data)
     cityname.textContent=data.name
     temp.textContent= data.main.temp
+    humidityElement.textContent= data.main.humidity
+    windElement.textContent= data.wind.speed
+
     var iconCode= data.weather[0].icon;
     var iconImg= document.createElement('img');
     iconImg.src = `http://openweathermap.org/img/w/${iconCode}.png`;
     temp.appendChild(iconImg);
+
+    var windIcon= document.getElementById('wind-icon');
+    windIcon.scr= "assets/images/wind.png"
 }
 
 function displayBrewery(breweryData) {
