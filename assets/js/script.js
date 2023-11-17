@@ -1,3 +1,4 @@
+var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 var temp = document.getElementById('temperature0');
 var cityname = document.getElementById('city0');
 var searchform = document.querySelector('.search');
@@ -17,14 +18,19 @@ function getCoordinates(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
       .then(response => response.json())
       .then(data => {
-        console.log("Weather API Response:", data);
+        console.log(data);
         var lat = data[0].lat;
         var lon = data[0].lon;
         getWeather(lat, lon);
         getBrewery(city);
-    })
-    .catch(error => console.error("Error fetching weather API:", error));
-}
+  
+        if (!searchHistory.includes(city)) {
+          searchHistory.push(city);
+          localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+          renderSearchHistory();
+        }
+      });
+  }
 
 function getBrewery(city) {
     fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&per_page=3`)
@@ -35,10 +41,6 @@ function getBrewery(city) {
     })
     .catch(error => console.error("Error fetching brewery API:", error));
 }
-
-
-
-
 
 function displayWeather(data){
     console.log(data)
@@ -88,13 +90,26 @@ function displayBrewery(breweryData) {
     brewerycontainer.appendChild(tileContainer);
 }
 
-  
-
-
-
 searchform.addEventListener("submit", (event) =>{
     event.preventDefault()
     console.log(cityinput.value)
 getCoordinates(cityinput.value)
 getBrewery(cityinput.value)
 } )
+
+function renderSearchHistory() {
+    var historyList = document.getElementById('historyList');
+    historyList.innerHTML = '';
+  
+    searchHistory.forEach(city => {
+      var historyItem = document.createElement('div');
+      historyItem.classList.add('searchHistory');
+      historyItem.textContent = city;
+      historyList.appendChild(historyItem);
+  
+      historyItem.addEventListener('click', () => {
+        getCoordinates(city);
+      });
+    });
+  }
+  
