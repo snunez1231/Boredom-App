@@ -45,13 +45,14 @@ function getBrewery(city) {
 function displayWeather(data){
     console.log(data)
     cityname.textContent=data.name
-    temp.textContent= `${data.main.temp}°F`
+    temp.textContent = `${Math.round(data.main.temp)}°F`;
     humidityElement.textContent= `${data.main.humidity}%`
-    windElement.textContent= `${data.wind.speed}%`
+    windElement.textContent= `${data.wind.speed}mph`
 
     var iconCode= data.weather[0].icon;
     var iconImg= document.createElement('img');
     iconImg.src = `http://openweathermap.org/img/w/${iconCode}.png`;
+    iconImg.classList.add('large-icon');
     temp.appendChild(iconImg);
 
     var windIcon= document.getElementById('wind-icon');
@@ -113,3 +114,6 @@ function renderSearchHistory() {
     });
   }
   
+
+renderSearchHistory();
+

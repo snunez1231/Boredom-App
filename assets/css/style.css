@@ -1,15 +1,16 @@
+
 body {
-    font-family: sans-serif;
+    font-family:'Courier New', Courier, monospace;
     background-color: azure;
     margin: 0;
     padding: 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
 }
 
 .header-container {
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-weight: bold;
     font-size: 35px;
@@ -20,8 +21,8 @@ body {
     border-radius: 0 0 30px 30px;
 }
 
-.header-container h2 {
-    font-weight: bold;
+.header-container h4{
+    font-size:20px;
 }
 
 .search-container {
@@ -45,28 +46,49 @@ body {
 .search button {
     background:#2689ec;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border: 0;
     cursor: pointer;
 }
 
-.weather-card {
-    background: linear-gradient(150deg, #51bcba, #5930de);
-    color: #fff;
-    border-radius: 20px;
-    padding: 30px 20px;
-    text-align: center;
-    margin: 10px 0;
+.tile-container {
+    margin-top: 20px;
+    flex-direction: row;
 }
 
-.brewery-card {
-    background: linear-gradient(150deg, #e7aee7, #deee98);
+.weather-card {
+    width:200px;
+    height:500px;
+    background: linear-gradient(250deg, #51bcba, #5930de);
     color: #fff;
     border-radius: 20px;
-    padding: 30px 20px;
+    padding: 80px 50px;
     text-align: center;
-    margin: 10px 0;
+    font-size: 20px;
+    align-items: center;
+}
+
+.large-icon {
+    width: 140px; 
+    height: 140px; 
+    margin-left:-100px;
+    margin-top:-60px;
+    
+}
+
+#city0{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#temperature0{
+    font-size: 40px;
+    margin-right:-35px;
+}
+
+.brewery-tiles {
+    flex-grow: 1;
 }
 
 #cityInput::placeholder {
