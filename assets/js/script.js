@@ -51,7 +51,7 @@ function displayWeather(data){
 
     var iconCode= data.weather[0].icon;
     var iconImg= document.createElement('img');
-    iconImg.src = `http://openweathermap.org/img/w/${iconCode}.png`;
+    iconImg.src = `https://openweathermap.org/img/w/${iconCode}.png`;
     iconImg.classList.add('large-icon');
     temp.appendChild(iconImg);
 
