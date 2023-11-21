@@ -1,4 +1,3 @@
-var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 var temp = document.getElementById('temperature0');
 var cityname = document.getElementById('city0');
 var searchform = document.querySelector('.search');
@@ -21,14 +20,15 @@ function getCoordinates(city) {
         console.log(data);
         var lat = data[0].lat;
         var lon = data[0].lon;
-        getWeather(lat, lon);
+
+        localStorage.setItem('lastCity', city);
+        localStorage.setItem('lastLat', lat);
+        localStorage.setItem('lastLon', lon);
+
+        getWeather(lat, lon); 
         getBrewery(city);
   
-        if (!searchHistory.includes(city)) {
-          searchHistory.push(city);
-          localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-          renderSearchHistory();
-        }
+        
       });
   }
 
@@ -94,26 +94,21 @@ function displayBrewery(breweryData) {
 searchform.addEventListener("submit", (event) =>{
     event.preventDefault()
     console.log(cityinput.value)
+
+  var inputCity= cityinput.value
+  localStorage.setItem('lastCity', inputCity);
+
 getCoordinates(cityinput.value)
 getBrewery(cityinput.value)
 } )
 
-function renderSearchHistory() {
-    var historyList = document.getElementById('historyList');
-    historyList.innerHTML = '';
-  
-    searchHistory.forEach(city => {
-      var historyItem = document.createElement('div');
-      historyItem.classList.add('searchHistory');
-      historyItem.textContent = city;
-      historyList.appendChild(historyItem);
-  
-      historyItem.addEventListener('click', () => {
-        getCoordinates(city);
-      });
-    });
+function checkLastCity() {
+  var lastCity = localStorage.getItem('lastCity');
+  if (lastCity) {
+      cityinput.value = lastCity;
+      getCoordinates(lastCity);
+      getBrewery(lastCity);
   }
-  
+}
 
-renderSearchHistory();
 
